@@ -12,12 +12,12 @@ def create_text(msg, name='my_file'):
 # create_text(msg='This is message')
 
 
-def text_filter(word, censor_file, changed_word='***'):
+def text_filter(word, censor_file, changed_word='*'):
     censor_list = censor_file.readlines()
     print(censor_list)
     for censor_word in censor_list:
         censor_word = censor_word.strip('\n')
-        word = word.replace(censor_word, changed_word)
+        word = word.replace(censor_word, changed_word*len(censor_word))
     return word
 # censor_path = os.path.dirname(__file__)
 # censor_file_path = os.path.join(censor_path, 'censorship.txt')
@@ -25,11 +25,12 @@ def text_filter(word, censor_file, changed_word='***'):
 # print(text_filter('This is horrible fuck u python', censor_files, 'Awesome'))
 
 
-def text_create_censored(msg, name='censored_file.txt'):
+def text_create_censored(msg, name='censored_file'):
     censorship_path = os.path.dirname(__file__)
     censorship_file = open(os.path.join(censorship_path, 'censorship.txt'))
-    msg = text_filter(msg, censorship_file, '根据相关法律法规部分文字没有显示')
+    msg = text_filter(msg, censorship_file)
     create_text(msg, name)
     print('Done')
     return None
-text_create_censored('fuck u python')
+text_create_censored('a quick brown fox jumps over a lazy dog this is so fucking retard')
+

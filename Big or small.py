@@ -70,3 +70,4 @@ def gamble_start(rate=1, start_money=10000):
     return None
 
 gamble_start()
+

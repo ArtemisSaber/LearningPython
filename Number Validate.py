@@ -14,7 +14,14 @@ def validate_input(input_data, validate_file_pos=validate_file_path, input_lengt
             number_list = string[1].replace('[', '').replace(']', '').split(',')
             for number in number_list:
                 number = number.strip('\n')
-                index = input_data.find(number, 0, 3)
+                number = number.strip(' ')
+                # print(number)
+                if len(number) == 3:
+                    index = input_data.find(number, 0, 3)
+                elif len(number) == 4:
+                    index = input_data.find(number, 0, 4)
+                else:
+                    index = -1
                 if index != -1:
                     print(operator)
                     print('Sending SMS to your cell phone : ' + input_data)

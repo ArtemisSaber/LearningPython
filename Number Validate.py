@@ -7,7 +7,7 @@ def validate_input(input_data, validate_file_pos=validate_file_path, input_lengt
     validate_file = open(validate_file_pos)
     validate_list = validate_file.readlines()
     is_valid = False
-    if len(input_data) >= input_length:
+    if len(input_data) >= input_length and input_data.isdigit():
         for string in validate_list:
             string = string.split('=')
             operator = string[0]
